@@ -173,10 +173,172 @@ def tabuada():
 
     num = int(input('De qual número deseja ver a tabuada? '))
     print('TABUADA'.center(20))
+    for n in range(1, 11):
+        resultado = (n) * num
+        print(f'{n} * {num} = {resultado}')
+
+
+def potencia():
+    # Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado
+    # ao segundo número. Não utilize a função de potência da linguagem.
+
+    base = int(input('Digite o núemro base: '))
+    expoente = int(input('Digite o número de expoentes: '))
+    resultado = 1
+
+    for c in range(expoente):
+        resultado *= base
+    print(f'O resultados de {base} elevado a {expoente} é: {resultado}')
+
+
+def lista_par_impar():
+    #Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números pares e
+    # a quantidade de números impares.
+
+    impar = []
+    par = []
     for n in range(10):
-        resultado = (n+1) * num
-        print(f'{n+1} * {num} = {resultado}')
+        num = int(input('Digite um número: '))
+
+        if num % 2 == 0:
+            par.append(num)
+        else:
+            impar.append(num)
+
+    print(f'Dos 10 número digitados {len(par)} eram par(s) e {len(impar)} eram impar(s).')
+
+
+def fibonacci():
+    #A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,...
+    # Faça um programa capaz de gerar a série até o n−ésimo termo.
+
+    seq = int(input('Quantos termos deve ser mostrado da sequencia de Fibonnacci? '))
+
+    ultimo = 1
+    penultimo = 0
+    print(penultimo, ultimo, end=' ')
+    for c in range(seq-2):
+
+        novo = ultimo + penultimo
+        print(novo, end=' ')
+        penultimo = ultimo
+        ultimo = novo
+
+
+def fibonacci_2():
+    # A série de Fibonacci é formada pela seqüência 0,1,1,2,3,5,8,13,21,34,55,...
+    # Faça um programa que gere a série até que o valor seja maior que 500.
+
+    ultimo = 1
+    penultimo = 0
+    print(penultimo, ultimo, end=' ')
+
+    while True:
+        novo = ultimo + penultimo
+        print(novo, end=' ')
+        if novo > 500:
+            break
+        penultimo = ultimo
+        ultimo = novo
+
+
+def fatorial():
+    # Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário.
+    # Ex.: 5!=5.4.3.2.1=120
+
+    num = int(input('Qual o número cuja o fatorial deve ser calculado? '))
+    fat = 1
+
+    for c in range(1, num+1):
+        fat *= c
+
+    print(fat)
+
+
+def conjunto():
+    # Faça um programa que, dado um conjunto de N números, determine o menor valor, o maior valor e a soma dos valores
+    # Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
+
+    num_maior = 0
+    num_menor = 0
+    soma = 0
+
+    while True:
+        num = int(input('Digite um número: '))
+        if num > 1000 or num < 0:
+            print('Valor Inválido. Digite novamente um número entre 0 e 1000.')
+            num = int(input('Digite um número: '))
+
+        escolha = input('Quer continuar? ').upper()[0]
+
+        if soma == 0:
+            num_maior = num
+            num_menor = num
+        if num > num_maior:
+            num_maior = num
+        if num < num_menor:
+            num_menor = num
+        soma += num
+        if escolha == 'N':
+            break
+    print(f'O menor número foi {num_menor}, o maior número foi {num_maior}.'
+          f' A soma de todos os números digitados é {soma}.')
+
+
+def fatorial_2():
+    # Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o
+    # fatorial várias vezes e limitando o fatorial a números inteiros positivos e menores que 16.
+
+    while True:
+
+        num = int(input('Qual o número cuja o fatorial deve ser calculado? '))
+        if num > 16 or num < 0:
+            print('Valor Inválido. Digite novamente um número menor 16 e positivo.')
+            num = int(input('Qual o número cuja o fatorial deve ser calculado? '))
+        fat = 1
+
+        for c in range(1, num + 1):
+            fat *= c
+
+        print(fat)
+
+        escolha = input('Quer continuar? ').upper()[0]
+        if escolha == 'N':
+            break
+
+
+def e_primo():
+    # Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
+    # Um número primo é aquele que é divisível somente por ele mesmo e por 1
+
+    num = int(input('Digite um número: '))
+
+    for n in range(2,num//2+1):
+        resto = num % n
+        if resto == 0:
+            print('Ele NÃO é primo')
+            return
+    print(f'{num} é PRIMO.')
+
+
+def e_primo_2():
+    # Altere o programa de cálculo dos números primos, informando, caso o número não seja primo,
+    # por quais número ele é divisível.
+
+    num = int(input('Digite um número: '))
+    n_divisivel = list()
+
+    for n in range(2, num//2+1):
+        resto = num % n
+        if resto == 0:
+            n_divisivel.append(n)
+            # print('Ele NÃO é primo')
+            # return
+    if len(n_divisivel) > 0:
+        print(f'O número {num} NÃO é primo, pois ele é divisível por {n_divisivel}.')
+    else:
+        print(f'{num} é PRIMO.')
 
 
 if __name__ == '__main__':
-    tabuada()
+    e_primo_2()
